@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  transition: background-color 0.5s;
+  padding: 25px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  background: var(--element-background);
+  transition: background-color 0.5s;
+  font-family: inherit;
+  box-shadow: var(--shadow);
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 2rem 1rem 1rem;
+  margin: 20px 0 30px;
+  max-width: 100px;
+  text-decoration: none;
+}
+
+.backBtnText {
+  margin-left: 0.5em;
+}
+
+.countryInfoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.flag {
+  max-width: 600px;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .countryInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .detailsContainer {
+    margin-left: 5rem;
+  }
+  .listContainer {
+    display: flex;
+    flex-direction: row;
+  }
+}

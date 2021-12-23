@@ -1,0 +1,39 @@
+.container {
+  margin: 1.5em;
+  width: 300px;
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  background: var(--background);
+}
+
+.flagContainer {
+  border-radius: 5px 5px 0 0;
+
+  height: 12rem;
+  width: 100%;
+}
+
+.flag {
+  border-radius: 5px 5px 0 0;
+}
+
+.info {
+  padding: 15px;
+}
+
+.name {
+  margin-top: 0px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.link:visited {
+  color: none;
+}

@@ -1,16 +1,65 @@
-html,
+html {
+  --text-color: hsl(200, 15%, 8%);
+  --background: hsl(0, 0%, 98%);
+  --element-background: hsl(0, 0%, 100%);
+  --shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  --dark: hsl(200, 15%, 8%);
+}
+
 body {
-  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--text-color);
+  background: var(--background);
+  transition: background-color 0.5s;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html.dark {
+  --text-color: hsl(0, 0%, 100%);
+  --background: hsl(207, 26%, 17%);
+  --element-background: hsl(209, 23%, 22%);
+  --shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-* {
-  box-sizing: border-box;
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 30px 40px 30px;
+  background: var(--background);
+  transition: background-color 0.5s;
+}
+
+select {
+  color: var(--text-color);
+  background: var(--element-background);
+  transition: background-color 0.5s;
+  font-family: inherit;
+  box-shadow: var(--shadow);
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 6rem 1rem 1rem;
+  margin: 20px 0px 30px 0px;
+}
+
+h1 {
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+@media (min-width: 900px) {
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
