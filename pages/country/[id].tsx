@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../../styles/country.module.css";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
+import { GetStaticPaths } from "next";
 
 export default function Post({ country }: any) {
   return (
@@ -18,7 +19,6 @@ export default function Post({ country }: any) {
           </a>
         </Link>
         {country.map((country: any) => {
-          console.log(country);
           const {
             area,
             flags,
@@ -52,18 +52,25 @@ export default function Post({ country }: any) {
                         <span className={styles.bold}>Region: </span>
                         {region}
                       </li>
-                      <li>
-                        <span className={styles.bold}>Sub Region: </span>
-                        {subregion}
-                      </li>
-                      <li>
-                        <span className={styles.bold}>Capital: </span>
-                        {capital[0]}
-                      </li>
-                      <li>
-                        <span className={styles.bold}>Languages: </span>
-                        {Object.values(languages).join(", ")}
-                      </li>
+                      {subregion && (
+                        <li>
+                          <span className={styles.bold}>Sub Region: </span>
+                          {subregion}
+                        </li>
+                      )}
+
+                      {capital && (
+                        <li>
+                          <span className={styles.bold}>Capital: </span>
+                          {capital[0]}
+                        </li>
+                      )}
+                      {languages && (
+                        <li>
+                          <span className={styles.bold}>Languages: </span>
+                          {Object.values(languages).join(", ")}
+                        </li>
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -76,9 +83,11 @@ export default function Post({ country }: any) {
   );
 }
 
-export async function getStaticProps(context: { params: { id: any } }) {
+export const getStaticProps = async (context: { params: { id: any } }) => {
   const id = context.params.id;
-  const res = await fetch(`https://restcountries.com/v3.1/name/${id}`);
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${encodeURIComponent(id)}`
+  );
   const json = await res.json();
 
   return {
@@ -86,9 +95,9 @@ export async function getStaticProps(context: { params: { id: any } }) {
       country: json,
     },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const json = await res.json();
   const paths = json.map((countries: { name: { common: string } }) => ({
@@ -98,4 +107,4 @@ export async function getStaticPaths() {
     paths: paths,
     fallback: true,
   };
-}
+};
